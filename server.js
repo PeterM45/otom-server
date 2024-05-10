@@ -15,6 +15,12 @@ app.use(express.json());
 // Initialize the OpenAI API client with your API key
 const openai = new OpenAI();
 app.use(cors());
+
+// return hello in / route
+app.get('/', (req, res) => {
+  res.send('Hello');
+});
+
 // Define a POST route for OpenAI API requests
 app.post('/api/openai', async (req, res) => {
   console.log('GETTING /api/openai request');
@@ -35,7 +41,7 @@ app.post('/api/openai', async (req, res) => {
 });
 
 // Define the port to listen on
-const PORT = 3001;
+const PORT = 3001 || process.env.PORT;
 
 // Start the server
 app.listen(PORT, () => {
