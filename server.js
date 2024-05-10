@@ -4,23 +4,29 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import OpenAI from 'openai';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 // Initialize dotenv to use environment variables
 dotenv.config();
 
 const app = express();
-
 app.use(express.json());
 
 // Initialize the OpenAI API client with your API key
 const openai = new OpenAI();
 app.use(cors());
 
-// return hello in / route
-app.get('/', (req, res) => {
-  res.send('Hello');
-});
+// Define __dirname in ES Module scope
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
+// Set up static files directory
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Serve public/index.html on the root route
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
 // Define a POST route for OpenAI API requests
 app.post('/api/openai', async (req, res) => {
   console.log('GETTING /api/openai request');
