@@ -34,7 +34,7 @@ app.post('/api/openai', async (req, res) => {
   try {
     const { messages } = req.body; // Extract messages from the incoming request
     const completion = await openai.chat.completions.create({
-      model: 'gpt-3.5-turbo',
+      model: 'gpt-4o',
       messages: messages,
     });
 
