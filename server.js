@@ -63,7 +63,7 @@ app.post('/api/prompt-builder', async (req, res) => {
       messages: [
         {
           role: 'user',
-          content: `${prompt} can you write a prompt for me to ask otomAI with this text?`,
+          content: `${prompt} can you write a prompt for me to ask Otom AI with this text?`,
         },
       ],
     });
