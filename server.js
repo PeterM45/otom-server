@@ -63,7 +63,7 @@ app.post('/api/prompt-builder', async (req, res) => {
       messages: [
         {
           role: 'user',
-          content: `${prompt} can you write a prompt for me to ask Otom AI with this text?`,
+          content: `For the following message Please just return the prompt you generate, NOTHING ELSE, not even a little sentence beforehand, just return the prompt I should use. Please do not include quotations in your response. Please make sure the generated prompt will ensure the most accuracy with someting like chat gpt. ${prompt} can you write a prompt for me to ask Otom AI with this text? `,
         },
       ],
     });
